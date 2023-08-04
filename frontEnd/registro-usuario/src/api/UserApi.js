@@ -1,6 +1,6 @@
 import { API_HOST } from "../utils/constants";
 
-export async function getUserApi(){
+export async function getUserApi() {
     try {
         console.log(API_HOST)
         const url = `${API_HOST}`
@@ -18,7 +18,7 @@ export async function postUserApi(request) {
         let maxUserid = 2;
 
         for (let element in listaUser) {
-            if(element.userId > maxUserid) {
+            if (element.userId > maxUserid) {
                 maxUserid = element.userId
             }
         }
@@ -26,14 +26,14 @@ export async function postUserApi(request) {
         console.log(request.userId)
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
             body: JSON.stringify(request)
         };
         const url = `${API_HOST}`
         console.log(request)
         const response = await fetch(url, requestOptions)
         const result = await response.json()
-        return result  
+        return result
     } catch (error) {
         throw error
     }
@@ -43,13 +43,13 @@ export async function putUserApi(id, request) {
     try {
         const requestOptions = {
             method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
             body: JSON.stringify(request)
         };
         const url = `${API_HOST}/${id}`
         const response = await fetch(url, requestOptions)
         const result = await response.json()
-        return result  
+        return result
     } catch (error) {
         throw error
     }
@@ -59,14 +59,12 @@ export async function deleteUserApi(id) {
     try {
         const requestOptions = {
             method: 'DELETE',
-            headers : { 
-                'Content-Type': 'application/json'
-               }
+            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
         };
         const url = `${API_HOST}/${id}`
         const response = await fetch(url, requestOptions)
         const result = await response.json()
-        return result  
+        return result
     } catch (error) {
         throw error
     }
