@@ -5,7 +5,7 @@ namespace webapi.Models;
 
 public class User
 {
-    public Guid UserId {get;set;}
+    public int UserId {get;set;}
     public string Nombres {get;set;}
 
     public string Apellidos {get;set;}
