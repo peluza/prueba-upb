@@ -12,14 +12,15 @@ export async function getUserApi(){
     }
 }
 
-export async function postUserApi(id, request) {
+export async function postUserApi(request) {
     try {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(request)
         };
-        const url = `${API_HOST}/${id}`
+        const url = `${API_HOST}`
+        console.log(request)
         const response = await fetch(url, requestOptions)
         const result = await response.json()
         return result  
@@ -55,5 +56,17 @@ export async function deleteUserApi(id) {
         return result  
     } catch (error) {
         throw error
+    }
+}
+
+export async function getUserApiById(id) {
+    try {
+        console.log(API_HOST)
+        const url = `${API_HOST}`
+        const response = await fetch(url)
+        const result = await response.json()
+        return result.find(user => user.userId == id)
+    } catch (err) {
+        throw err;
     }
 }
