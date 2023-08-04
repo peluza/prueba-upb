@@ -20,9 +20,9 @@ public class UserServices : IUserServices
         await context.SaveChangesAsync();
     }
     
-    public async Task Update(Guid id, User user)
+    public async Task Update(int UserId, User user)
     {
-        var Userctual = context.user.Find(id);
+        var Userctual = context.user.Find(UserId);
         if (Userctual != null)
         {
             Userctual.Nombres = user.Nombres;
@@ -33,9 +33,9 @@ public class UserServices : IUserServices
         }
     }
 
-     public async Task Delete(Guid id)
+     public async Task Delete(int UserId)
     {
-        var userActual = context.user.Find(id);
+        var userActual = context.user.Find(UserId);
         if (userActual != null)
         {
             context.Remove(userActual);
@@ -48,7 +48,7 @@ public interface IUserServices
 {
     IEnumerable<User> Get();
     Task Save(User user);
-    Task Update(Guid id, User user);
-    Task Delete(Guid id);
+    Task Update(int UserId, User user);
+    Task Delete(int UserId);
 
 }
