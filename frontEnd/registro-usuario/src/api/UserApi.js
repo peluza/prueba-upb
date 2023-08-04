@@ -14,6 +14,16 @@ export async function getUserApi(){
 
 export async function postUserApi(request) {
     try {
+        const listaUser = await getUserApi()
+        let maxUserid = 2;
+
+        for (let element in listaUser) {
+            if(element.userId > maxUserid) {
+                maxUserid = element.userId
+            }
+        }
+        request.userId = maxUserid + 1
+        console.log(request.userId)
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -49,6 +59,9 @@ export async function deleteUserApi(id) {
     try {
         const requestOptions = {
             method: 'DELETE',
+            headers : { 
+                'Content-Type': 'application/json'
+               }
         };
         const url = `${API_HOST}/${id}`
         const response = await fetch(url, requestOptions)
