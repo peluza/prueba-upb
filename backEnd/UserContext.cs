@@ -12,8 +12,8 @@ public class UserContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         List<User> userInit = new List<User>();
-        userInit.Add(new User() { UserId = Guid.Parse("fe2de405-c38e-4c90-ac52-da0540dfb4ef"), Nombres = "Edison Esteban", Apellidos = "Isaza López", Usuario = "eisaza", Correo = "edisonisaza@gmail.com" });
-        userInit.Add(new User() { UserId = Guid.Parse("fe2de405-c38e-4c90-ac52-da0540dfb402"), Nombres = "Yoamin Estiven", Apellidos = "Jaramillo Munera", Usuario = "yjaramillo", Correo = "correo@gmail.com" });
+        userInit.Add(new User() { UserId = 1, Nombres = "Edison Esteban", Apellidos = "Isaza López", Usuario = "eisaza", Correo = "edisonisaza@gmail.com" });
+        userInit.Add(new User() { UserId = 2, Nombres = "Yoamin Estiven", Apellidos = "Jaramillo Munera", Usuario = "yjaramillo", Correo = "correo@gmail.com" });
 
 
         modelBuilder.Entity<User>(user =>
