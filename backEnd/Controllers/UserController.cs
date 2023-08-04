@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using webapi.Models;
+using webapi;
 
 namespace backEnd.Controllers;
 
@@ -9,11 +10,12 @@ namespace backEnd.Controllers;
 public class UserController : ControllerBase
 {
     IUserServices userServices;
-    webapi.UserContext dbcontext;
+    UserContext dbcontext;
 
-     public UserController(IUserServices service)
+     public UserController(IUserServices service, UserContext db)
     {
        userServices = service;
+       dbcontext = db;
     }
 
     [HttpGet]
@@ -22,19 +24,22 @@ public class UserController : ControllerBase
         return Ok(userServices.Get());
     }
 
+    [HttpPost]
     public IActionResult Post([FromBody] User user)
     {
         userServices.Save(user);
         return Ok("Guardado Exitosamente");
     }
 
-    public IActionResult Post([FromBody] Guid id, User user)
+    [HttpPut("{id}")]
+    public IActionResult Put(int id, [FromBody] User user)
     {
         userServices.Update(id, user);
         return Ok("Actualizado Exitosamente");
     }
     
-    public IActionResult Delete(Guid id) 
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id) 
     {
         userServices.Delete(id);
         return Ok("Eliminado Exitosamente");
