@@ -8,7 +8,7 @@ export default function UsersCard(props) {
     const navigation = useNavigation()
 
     const getToUser = () => {
-        navigation.navigate("User", user)
+        navigation.navigate("UserProfile", user)
     }
 
     return (

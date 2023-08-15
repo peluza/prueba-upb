@@ -10,7 +10,7 @@ const Tab = createBottomTabNavigator();
 export default function Navigation() {
     return (
         <Tab.Navigator>
-            <Tab.Screen name='Users' component={UsersNavigation} options={{
+            <Tab.Screen name='UsersTab' component={UsersNavigation} options={{
                 tabBarLabel: "Usuarios",
                 tabBarIcon: () =>(
                     <Icon name="user" color="#000" size={20} />
@@ -19,7 +19,7 @@ export default function Navigation() {
             }
 
             } />
-            <Tab.Screen name='NewUsers' component={NewUserNavigation}  options={{
+            <Tab.Screen name='NewUsersTab' component={NewUserNavigation}  options={{
                 tabBarLabel: "Nuevo Usuario",
                 tabBarIcon: ()=> (
                     <Icon name="user-plus" color="#000" size={20} />

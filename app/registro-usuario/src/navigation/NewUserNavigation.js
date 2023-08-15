@@ -7,7 +7,7 @@ const Stack = createStackNavigator()
 export default function NewUserNavigation() {
   return (
     <Stack.Navigator>
-        <Stack.Screen name="NewUser" component={NewUserScreen}  options={{ title: "", headerTransparent: true }} />
+        <Stack.Screen name="NewUserScreen" component={NewUserScreen}  options={{ title: "", headerTransparent: true }} />
     </Stack.Navigator>
   )
 }
